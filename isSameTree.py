@@ -1,4 +1,4 @@
-def isSameTree(p, q):
+def isSameTree(self, p, q):
     """
     :type p: TreeNode
     :type q: TreeNode
