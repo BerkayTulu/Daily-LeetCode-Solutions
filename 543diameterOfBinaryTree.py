@@ -24,4 +24,34 @@ class Solution(object):
         """
         :type root: TreeNode
         :rtype: int
-        """
+        """        
+        self.max_diameter = 0
+        
+        def dfs(node):
+            if not node:
+                return 0
+            
+            left_height = dfs(node.left)
+            right_height = dfs(node.right)
+            
+            # Update the maximum diameter found so far
+            self.max_diameter = max(self.max_diameter, left_height + right_height)
+            
+            # Return the height of the current node's subtree
+            return 1 + max(left_height, right_height)
+        
+        dfs(root)
+        return self.max_diameter
+
+# Input: root = [1,2,3,4,5]
+# Output: 3
+
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.right = TreeNode(3)
+root.left.left = TreeNode(4)
+root.left.right = TreeNode(5)
+
+solution = Solution()
+diameter = solution.diameterOfBinaryTree(root)
+print(diameter) # 3
