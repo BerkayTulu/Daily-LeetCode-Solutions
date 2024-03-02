@@ -20,4 +20,4 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
-        
+        # Find the rightmost '1' in the binary string

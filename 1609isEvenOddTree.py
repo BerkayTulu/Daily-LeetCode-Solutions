@@ -52,8 +52,6 @@ class Solution(object):
                 if node.right:
                     queue.append(node.right)
             levels.append(level)
-        for i in levels:
-            if i
         return levels
     
 
