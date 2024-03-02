@@ -29,15 +29,42 @@
 # Explanation: Node values in the level 1 should be even integers.
 
 # Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+class TreeNode(object):
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 class Solution(object):
     def isEvenOddTree(self, root):
         """
         :type root: TreeNode
         :rtype: bool
         """
-        
+        queue = [root]
+        levels = []
+        while queue:
+            level = []
+            for i in range(len(queue)):
+                node = queue.pop(0)
+                level.append(node.val)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            levels.append(level)
+        for i in levels:
+            if i
+        return levels
+    
+
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.right = TreeNode(3)
+root.left.left = TreeNode(4)
+root.left.right = TreeNode(5)
+
+solution = Solution()
+levels = solution.isEvenOddTree(root)
+
+for level in levels:
+  print(level)
