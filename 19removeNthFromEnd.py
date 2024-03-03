@@ -30,6 +30,8 @@ class Solution(object):
             head = head.next
         list.append(head.val)
         list.pop(-n)
+        if len(list) == 0:
+            return None
         head = ListNode(list[0])
         current = head
         for i in range(1, len(list)):
@@ -47,10 +49,10 @@ def print_list(node):
 
 # Örnek bir linked list oluştur
 head = ListNode(1)
-head.next = ListNode(2)
-head.next.next = ListNode(3)
-head.next.next.next = ListNode(4)
-head.next.next.next.next = ListNode(5)
+# head.next = ListNode(2)
+# head.next.next = ListNode(3)
+# head.next.next.next = ListNode(4)
+# head.next.next.next.next = ListNode(5)
 
 # Test için çıktıyı yazdır
 print("Başlangıçtaki linked list:")
@@ -58,7 +60,7 @@ print_list(head)
 
 # Solution sınıfını kullanarak belirli bir indexteki elemanı kaldır
 sol = Solution()
-new_head = sol.removeNthFromEnd(head, 2)
+new_head = sol.removeNthFromEnd(head, 1)
 
 # Sonucu yazdır
 print("Eleman çıkarıldıktan sonraki linked list:")
