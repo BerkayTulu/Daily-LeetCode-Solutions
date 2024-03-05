@@ -33,4 +33,22 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        
+        left = 0
+        right = len(s) - 1
+        while left < right and s[left] == s[right]:
+            t = s[left]
+            while left <= right and s[left] == t:
+                left += 1
+            while left <= right and s[right] == t:
+                right -= 1
+        return right - left + 1
+            
+
+# Test için örnekler oluştur
+s = Solution()
+print(s.minimumLength("bbbbbbbbbbbbbbbbbbbbbbbbbbbabbbbbbbbbbbbbbbccbcbcbccbbabbb"))
+print(s.minimumLength("ca")) # 2
+print(s.minimumLength("cabaabac")) # 0
+print(s.minimumLength("aabccabba")) # 3
+
+# 
