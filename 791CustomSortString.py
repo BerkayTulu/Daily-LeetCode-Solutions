@@ -16,4 +16,15 @@
 
 class Solution(object):
     def customSortString(self, order, s):
-        
+        """
+        :type order: str
+        :type s: str
+        :rtype: str
+        """
+        result = ""
+        for i in order:
+            if i in s:
+                result += i * s.count(i)
+                s = s.replace(i, "")
+        result += s
+        return result
