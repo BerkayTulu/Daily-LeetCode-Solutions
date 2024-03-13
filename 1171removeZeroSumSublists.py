@@ -23,4 +23,3 @@ class ListNode(object):
 
 class Solution(object):
     def removeZeroSumSublists(self, head):
-        return
