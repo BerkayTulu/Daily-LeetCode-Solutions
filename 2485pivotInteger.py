@@ -19,8 +19,26 @@
 
 class Solution(object):
     def pivotInteger(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
-        
+        l, r = 1, n
+        while l <= r:
+            p = (l + r) // 2
+            l_sum =  (1 + p) / 2 * p
+            r_sum = (p + n) / 2 * (n - p + 1) 
+            if l_sum == r_sum:
+                return p
+            if l_sum > r_sum:
+                r = p - 1
+            else:
+                l = p + 1
+        return -1
+    
+    
+    def testPivotInteger(self):
+        assert self.pivotInteger(8) == 6
+        assert self.pivotInteger(1) == 1
+        assert self.pivotInteger(4) == -1
+
+        print("All test cases pass")
+
+sol = Solution()
+sol.testPivotInteger()
