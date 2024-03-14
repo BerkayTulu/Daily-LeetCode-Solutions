@@ -32,15 +32,30 @@
 #                     total += 1
 #         return total
 
-class Solution(object): #İkinci çözümüm. İlk çözümdeki while döngülerini for döngüsüne çevirdim. Bu sayede büyük verilerde çalışma süresi kısalıyor.
+# class Solution(object): İkinci çözümüm. İlk çözümdeki while döngülerini for döngüsüne çevirdim. Bu sayede büyük verilerde çalışma süresi kısalıyor. Ancak yine de kabul edilmedi.
+#     def numSubarraysWithSum(self, nums, goal):
+#         total = 0
+#         for i in range(0, len(nums)):
+#             hedef = 0
+#             for a in range(0, len(nums) - i):
+#                 hedef += nums[i + a]
+#                 if hedef == goal:
+#                     total += 1
+#         return total
+
+class Solution(object): # copilotun çözümü sözlük kullanarak yapılmış. Aklıma gelmemişti.
     def numSubarraysWithSum(self, nums, goal):
         total = 0
-        for i in range(0, len(nums)):
-            hedef = 0
-            for a in range(0, len(nums) - i):
-                hedef += nums[i + a]
-                if hedef == goal:
-                    total += 1
+        sum_dict = {0: 1}
+        sum_ = 0
+        for num in nums:
+            sum_ += num
+            if sum_ - goal in sum_dict:
+                total += sum_dict[sum_ - goal]
+            if sum_ in sum_dict:
+                sum_dict[sum_] += 1
+            else:
+                sum_dict[sum_] = 1
         return total
 
 
