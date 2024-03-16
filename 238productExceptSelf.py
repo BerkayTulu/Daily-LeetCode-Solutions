@@ -10,19 +10,35 @@
 # Input: nums = [-1,1,0,-3,3]
 # Output: [0,0,9,0,0]
 
+# class Solution(object): # 1st attempt - O(n^2) time complexity
+#     def productExceptSelf(self, nums):
+#         ret = [1] * len(nums)
+#         for i in range(len(nums)):
+#             for j in range(len(nums)):
+#                 if i == j:
+#                     continue
+#                 else:
+#                     if nums[j] == 0:
+#                         ret[i] = 0
+#                     else:
+#                         ret[i] = ret[i] * nums[j]
+#         return ret
+
 class Solution(object):
     def productExceptSelf(self, nums):
-        ret = [1] * len(nums)
-        for i in range(len(nums)):
-            for j in range(len(nums)):
-                if i == j:
-                    continue
-                else:
-                    if nums[j] == 0:
-                        ret[i] = 0
-                    else:
-                        ret[i] = ret[i] * nums[j]
+        n = len(nums)
+        left = [1] * n
+        right = [1] * n
+        ret = [1] * n
+        for i in range(1, n):
+            left[i] = left[i-1] * nums[i-1]
+        for i in range(n-2, -1, -1):
+            right[i] = right[i+1] * nums[i+1]
+        for i in range(n):
+            ret[i] = left[i] * right[i]
         return ret
+    
+
     
 
 s = Solution()
