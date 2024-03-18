@@ -23,4 +23,22 @@
  
 class Solution(object):
     def findMinArrowShots(self, points):
-        return
+        if not points:
+            return 0
+
+        # Sort the points by their end coordinate
+        points.sort(key=lambda x: x[1])
+
+        arrows = 1
+        current_end = points[0][1]
+
+        for i in range(1, len(points)):
+            if points[i][0] > current_end:
+                # If the start of the current balloon is greater than the end of the previous balloon,
+                # we need a new arrow
+                arrows += 1
+                current_end = points[i][1]
+
+        return arrows
+
+    
