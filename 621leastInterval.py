@@ -21,4 +21,33 @@
 
 class Solution(object):
     def leastInterval(self, tasks, n):
-         
+        task_count = {}
+        for task in tasks:
+            if task in task_count:
+                task_count[task] += 1
+            else:
+                task_count[task] = 1
+
+        task_count = sorted(task_count.items(), key=lambda x: x[1], reverse=True)
+        max_count = task_count[0][1]
+        max_count_tasks = 0
+        for task in task_count:
+            if task[1] == max_count:
+                max_count_tasks += 1
+        intervals = (max_count - 1) * (n + 1) + max_count_tasks
+        return max(intervals, len(tasks))
+        
+tasks = ["A","A","A","B","B","B"]
+n = 2
+s = Solution()
+print(s.leastInterval(tasks, n)) # 8
+
+tasks = ["A","C","A","B","D","B"]
+n = 1
+s = Solution()
+print(s.leastInterval(tasks, n)) # 6
+
+tasks = ["A","A","A", "B","B","B"]
+n = 3
+s = Solution()
+print(s.leastInterval(tasks, n)) # 10
