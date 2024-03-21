@@ -20,3 +20,45 @@ class ListNode(object):
 
 class Solution(object):
     def reverseList(self, head):
+        prev = None
+        while head:
+            temp = head.next
+            head.next = prev
+            prev = head
+            head = temp
+        return prev
+
+# Time: O(n)
+# Space: O(1)
+# Difficulty: easy
+    
+def print_list(node):
+    while node:
+        print(node.val, end=" ")
+        node = node.next
+    print()
+
+# Test case
+head = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
+sol = Solution()
+result = sol.reverseList(head)
+
+print_list(result)
+# Output: 5 4 3 2 1
+
+# Test case
+head = ListNode(1, ListNode(2))
+sol = Solution()
+result = sol.reverseList(head)
+
+print_list(result)
+# Output: 2 1
+
+# Test case
+head = ListNode()
+sol = Solution()
+result = sol.reverseList(head)
+
+print_list(result)
+
+# Output:
