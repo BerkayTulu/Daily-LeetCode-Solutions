@@ -16,8 +16,4 @@ class ListNode(object):
         self.next = next
 class Solution(object):
     def isPalindrome(self, head):
-        """
-        :type head: ListNode
-        :rtype: bool
-        """
-        
+        return
