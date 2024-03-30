@@ -13,5 +13,21 @@
 # Explanation: No subarray contains the element 4 at least 3 times.
 
 class Solution(object):
-    def countSubarrays(self, nums, k):
+    def countSubArrays(self, nums, k):
+        count = defaultdict(int)
+        result = 0
+        left = 0
+
+        for right in range(len(nums)):
+            count[nums[right]] += 1
+
+            while count[nums[right]] >= k:
+                count[nums[left]] -= 1
+                if count[nums[left]] == 0:
+                    del count[nums[left]]
+                left += 1
+
+            result += left
+
+        return result
  
