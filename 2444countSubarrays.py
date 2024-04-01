@@ -17,3 +17,4 @@
 
 class Solution(object):
     def countSubarrays(self, nums, minK, maxK):
+        
