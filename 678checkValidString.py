@@ -19,4 +19,25 @@
 
 class Solution(object):
     def checkValidString(self, s):
-        
+        left = 0
+        right = 0
+        for i in range(len(s)):
+            if s[i] in '(*':
+                left += 1
+            else:
+                left -= 1
+            if s[~i] in '*)':
+                right += 1
+            else:
+                right -= 1
+            if left < 0 or right < 0:
+                return False
+        return True
+    
+s = Solution()
+print(s.checkValidString("()")) # True
+print(s.checkValidString("(*)")) # True
+print(s.checkValidString("(*))")) # True
+print(s.checkValidString("(*)))")) # False
+print(s.checkValidString("(*))")) # True
+print(s.checkValidString("(*)))")) # False
