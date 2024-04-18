@@ -28,8 +28,6 @@ class Solution(object):
         :type root: TreeNode
         :rtype: str
         """
-        
-
 
 #test cases
 root = [0,1,2,3,4,3,4]
