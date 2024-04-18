@@ -35,8 +35,7 @@ class Solution(object):
         :type depth: int
         :rtype: TreeNode
         """
-        
-#test cases
+
 root = [4,2,6,3,1,5]
 val = 1
 depth = 2
