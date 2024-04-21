@@ -34,4 +34,22 @@
 
 class Solution(object):
     def findFarmland(self, land):
-        
+        """
+        :type land: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        res = []
+        m, n = len(land), len(land[0])
+        for i in range(m):
+            for j in range(n):
+                if land[i][j] == 1:
+                    x, y = i, j
+                    while x < m and land[x][j] == 1:
+                        x += 1
+                    while y < n and land[i][y] == 1:
+                        y += 1
+                    res.append([i, j, x-1, y-1])
+                    for a in range(i, x):
+                        for b in range(j, y):
+                            land[a][b] = 0
+        return res
