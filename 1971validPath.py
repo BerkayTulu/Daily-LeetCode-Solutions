@@ -16,3 +16,35 @@
  
 class Solution(object):
     def validPath(self, n, edges, source, destination):
+        """
+        :type n: int
+        :type edges: List[List[int]]
+        :type source: int
+        :type destination: int
+        :rtype: bool
+        """
+        graph = {}
+        for u, v in edges:
+            if u not in graph:
+                graph[u] = []
+            if v not in graph:
+                graph[v] = []
+            graph[u].append(v)
+            graph[v].append(u)
+        visited = set()
+        def dfs(node):
+            if node == destination:
+                return True
+            visited.add(node)
+            for neighbor in graph.get(node, []):
+                if neighbor not in visited:
+                    if dfs(neighbor):
+                        return True
+            return False
+        return dfs(source)
+    
+#test cases
+s = Solution()
+print(s.validPath(3, [[0,1],[1,2],[2,0]], 0, 2)) #True
+print(s.validPath(6, [[0,1],[0,2],[3,5],[5,4],[4,3]], 0, 5)) #False
+print(s.validPath(5, [[0,1],[1,2],[2,3],[3,4]], 0, 4)) #True
