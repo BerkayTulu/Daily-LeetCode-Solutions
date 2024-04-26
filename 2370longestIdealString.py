@@ -24,22 +24,22 @@
 
 class Solution(object):
     def longestIdealString(self, s, k):
-        """
-        :type s: str
-        :type k: int
-        :rtype: int
-        """
-        n = len(s)
-        dp = [[0] * 26 for _ in range(n + 1)]
-        for i in range(1, n + 1):
-            for j in range(26):
-                dp[i][j] = dp[i - 1][j] + (s[i - 1] == chr(ord('a') + j))
-        res = 0
-        for i in range(1, n + 1):
-            for j in range(26):
-                if dp[i][j] == 0:
-                    continue
-                for l in range(j + 1, 26):
-                    if dp[i][l] - dp[i][j] <= k:
-                        res = max(res, dp[i][l] - dp[i][j] + 1)
-        return res
+        dp = [0] * 26
+    
+    # Iterate over each character in the string
+        for c in s:
+            # Get the index of the current character
+            index = ord(c) - ord('a')
+            
+            # Calculate the current max length for this character
+            max_len = 0
+            
+            # Check all possible characters within the distance k
+            for i in range(max(0, index - k), min(25, index + k) + 1):
+                max_len = max(max_len, dp[i])
+            
+            # Update dp for the current character
+            dp[index] = max_len + 1
+        
+        # The result is the maximum value in dp, which gives us the length of the longest ideal subsequence
+        return max(dp)
