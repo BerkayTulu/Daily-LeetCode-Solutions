@@ -40,3 +40,31 @@
 
 class Solution(object):
     def wonderfulSubstrings(self, word):
+        """
+        :type word: str
+        :rtype: int
+        """
+        # Initialize the result
+        res = 0
+        # Initialize the prefix sum
+        prefix = [0] * 1024
+        # Initialize the prefix sum at 0
+        prefix[0] = 1
+        # Initialize the mask
+        mask = 0
+        # Iterate the word
+        for c in word:
+            # Get the index
+            index = ord(c) - ord('a')
+            # Update the mask
+            mask ^= 1 << index
+            # Update the result
+            res += prefix[mask]
+            # Iterate the prefix
+            for i in range(10):
+                # Update the result
+                res += prefix[mask ^ (1 << i)]
+            # Update the prefix
+            prefix[mask] += 1
+        # Return the result
+        return res
