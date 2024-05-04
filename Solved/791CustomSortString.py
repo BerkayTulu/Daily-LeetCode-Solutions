@@ -28,3 +28,12 @@ class Solution(object):
                 s = s.replace(i, "")
         result += s
         return result
+    
+#test cases
+order = "cba"
+s = "abcd"
+sol = Solution()
+print(sol.customSortString(order, s)) #Output: "cbad"
+order = "bcafg"
+s = "abcd"
+print(sol.customSortString(order, s)) #Output: "bcad"

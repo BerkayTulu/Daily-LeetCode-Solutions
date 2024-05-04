@@ -53,3 +53,5 @@ class Solution(object):
                         for b in range(j, y):
                             land[a][b] = 0
         return res
+
+#test cases

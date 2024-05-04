@@ -19,3 +19,4 @@ class Solution(object):
         if len(set(s)) != len(set(t)):
             return False
         return [s.find(i) for i in s] == [t.find(j) for j in t]
+

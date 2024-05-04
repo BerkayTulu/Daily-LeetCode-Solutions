@@ -43,3 +43,4 @@ class Solution(object):
         
         # The result is the maximum value in dp, which gives us the length of the longest ideal subsequence
         return max(dp)
+

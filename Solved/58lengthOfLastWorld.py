@@ -22,3 +22,10 @@ class Solution(object):
     def lengthOfLastWord(self, s):
         words = s.split()
         return len(words[-1])
+    
+#test cases
+s = "Hello World"
+sol = Solution()
+print(sol.lengthOfLastWord(s)) #Output: 5
+s = "   fly me   to   the moon  "
+print(sol.lengthOfLastWord(s)) #Output: 4

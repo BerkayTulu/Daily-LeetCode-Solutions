@@ -68,3 +68,10 @@ class Solution(object):
             prefix[mask] += 1
         # Return the result
         return res
+    
+# test the solution
+s = Solution()
+word = "aba"
+print(s.wonderfulSubstrings(word)) # 4
+word = "aabb"
+print(s.wonderfulSubstrings(word)) # 9

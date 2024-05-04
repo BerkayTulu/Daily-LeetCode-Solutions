@@ -12,6 +12,9 @@
 # Output: 0
 # Explanation: No subarray contains the element 4 at least 3 times.
 
+from collections import defaultdict
+
+
 class Solution(object):
     def countSubArrays(self, nums, k):
         count = defaultdict(int)
@@ -31,3 +34,11 @@ class Solution(object):
 
         return result
  
+# test the solution
+s = Solution()
+nums = [1,3,2,3,3]
+k = 2
+print(s.countSubArrays(nums, k)) # 6
+nums = [1,4,2,1]
+k = 3
+print(s.countSubArrays(nums, k)) # 0

@@ -34,10 +34,9 @@ class Solution(object):
             left_height = dfs(node.left)
             right_height = dfs(node.right)
             
-            # Update the maximum diameter found so far
+
             self.max_diameter = max(self.max_diameter, left_height + right_height)
-            
-            # Return the height of the current node's subtree
+
             return 1 + max(left_height, right_height)
         
         dfs(root)

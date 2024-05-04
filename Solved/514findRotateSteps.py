@@ -47,3 +47,12 @@ class Solution(object):
             return minSteps
         memo = {}
         return findNext(ring, key, 0, 0)
+
+#test cases
+ring = "godding"
+key = "gd"
+sol = Solution()
+print(sol.findRotateSteps(ring, key)) #Output: 4
+ring = "godding"
+key = "godding"
+print(sol.findRotateSteps(ring, key)) #Output: 13

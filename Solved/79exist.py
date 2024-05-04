@@ -30,3 +30,13 @@ class Solution(object):
                 if dfs(i, j, 0):
                     return True
         return False
+
+#test cases
+board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]]
+word = "ABCCED"
+sol = Solution()
+print(sol.exist(board, word)) #Output: True
+word = "SEE"
+print(sol.exist(board, word)) #Output: True
+word = "ABCB"
+print(sol.exist(board, word)) #Output: False

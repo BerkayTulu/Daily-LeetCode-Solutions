@@ -44,3 +44,12 @@ class Solution(object):
                     new_leaves.append(neighbor)
             leaves = new_leaves
         return leaves
+
+#test cases
+n = 4
+edges = [[1,0],[1,2],[1,3]]
+sol = Solution()
+print(sol.findMinHeightTrees(n, edges)) #Output: [1]
+n = 6
+edges = [[3,0],[3,1],[3,2],[3,4],[5,4]]
+print(sol.findMinHeightTrees(n, edges)) #Output: [3,4]

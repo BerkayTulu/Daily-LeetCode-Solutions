@@ -30,3 +30,10 @@ class Solution(object):
             hare = nums[hare]
 
         return hare
+    
+#test cases
+nums = [1,3,4,2,2]
+sol = Solution()
+print(sol.findDuplicate(nums)) #Output: 2
+nums = [3,1,3,4,2]
+print(sol.findDuplicate(nums)) #Output: 3
