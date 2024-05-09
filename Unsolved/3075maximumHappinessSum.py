@@ -26,14 +26,28 @@
 # - Pick the child with the happiness value == 5. The happiness value of the remaining children becomes [1,2,3].
 # The sum of the happiness values of the selected children is 5.
 
+# class Solution(object):
+#     def maximumHappinessSum(self, happiness, k):
+#         happiness.sort(reverse=True)
+#         total = 0
+#         for i in range(k):
+#             total += happiness[i]
+#             happiness = [value - 1 if value > 0 else value for value in happiness]
+#         return total
+
 class Solution(object):
     def maximumHappinessSum(self, happiness, k):
+        ans = 0
+        decremented = 0
+
         happiness.sort(reverse=True)
-        total = 0
+
         for i in range(k):
-            total += happiness[i]
-            happiness = [value - 1 if value > 0 else value for value in happiness]
-        return total
+            ans += max(0, happiness[i] - decremented)
+            decremented += 1
+
+        return ans
+            
 
 #test case
 obj = Solution()
