@@ -28,3 +28,15 @@
 
 class Solution(object):
     def maximumHappinessSum(self, happiness, k):
+        happiness.sort(reverse=True)
+        total = 0
+        for i in range(k):
+            total += happiness[i]
+            happiness = [value - 1 if value > 0 else value for value in happiness]
+        return total
+
+#test case
+obj = Solution()
+print(obj.maximumHappinessSum([1,2,3], 2)) #4
+print(obj.maximumHappinessSum([1,1,1,1], 2)) #1
+print(obj.maximumHappinessSum([2,3,4,5], 1)) #5
