@@ -13,6 +13,41 @@
 # Input: quality = [3,1,10,10,1], wage = [4,8,2,2,7], k = 3
 # Output: 30.66667
 # Explanation: We pay 4 to 0th worker, 13.33333 to 2nd and 3rd workers separately.
- 
+import heapq
+
 class Solution(object):
     def mincostToHireWorkers(self, quality, wage, k):
+        workers = sorted((w/q, q, w) for w, q in zip(wage, quality))
+        res = float('inf')
+        qsum = 0
+        heap = []
+        
+        for r, q, w in workers:
+            heapq.heappush(heap, -q)
+            qsum += q
+            
+            if len(heap) > k:
+                qsum += heapq.heappop(heap)
+            
+            if len(heap) == k:
+                res = min(res, qsum * r)
+        
+        return float(res)
+    
+class Solution:
+  def mincostToHireWorkers(self, quality: List[int], wage: List[int], k: int) -> float:
+    ans = math.inf
+    qualitySum = 0
+    # (wagePerQuality, quality) sorted by wagePerQuality
+    workers = sorted((w / q, q) for q, w in zip(quality, wage))
+    maxHeap = []
+
+    for wagePerQuality, q in workers:
+      heapq.heappush(maxHeap, -q)
+      qualitySum += q
+      if len(maxHeap) > k:
+        qualitySum += heapq.heappop(maxHeap)
+      if len(maxHeap) == k:
+        ans = min(ans, qualitySum * wagePerQuality)
+
+    return ans
