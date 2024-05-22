@@ -18,7 +18,35 @@
 # Output: 1
 # Explanation: The beautiful subset of the array nums is [1].
 # It can be proved that there is only 1 beautiful subset in the array [1].
-
 class Solution(object):
     def beautifulSubsets(self, nums, k):
-        
+        count = collections.Counter(nums)
+        modToSubset = collections.defaultdict(set)
+
+        for num in nums:
+            modToSubset[num % k].add(num)
+
+        prevNum = -k
+        skip = 0
+        pick = 0
+
+        for subset in modToSubset.values():
+            for num in sorted(subset):
+                nonEmptyCount = 2**count[num] - 1
+                skip, pick = skip + pick, nonEmptyCount * \
+                    (1 + skip + (0 if num - prevNum == k else pick))
+                prevNum = num
+
+        return skip + pick
+  
+#test code
+nums = [2,4,6]
+k = 2
+sol = Solution()
+print(sol.beautifulSubsets(nums, k))
+nums = [1]
+k = 1
+print(sol.beautifulSubsets(nums, k))
+nums = [1,2,3,4,5]
+k = 1
+print(sol.beautifulSubsets(nums, k))
